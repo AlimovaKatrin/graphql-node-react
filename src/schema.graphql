@@ -1,0 +1,23 @@
+type SayGoodByeResponse {
+  text: String!
+  error: Boolean!
+}
+
+type Query {
+  sayBuy(name: String!): SayGoodByeResponse!
+  sayHello(name: String!): SayHelloRespone!
+  checkUser(name: String!): UserQueryRespone!
+}
+
+type SayHelloRespone {
+  text: String!
+  error: Boolean!
+}
+
+type User {
+  name: String!
+}
+
+type UserQueryRespone {
+  user: User
+}

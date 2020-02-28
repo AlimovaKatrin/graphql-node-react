@@ -1,0 +1,8 @@
+type SayGoodByeResponse {
+  text: String!
+  error: Boolean!
+}
+
+type Query {
+  sayBuy(name: String!): SayGoodByeResponse!
+}

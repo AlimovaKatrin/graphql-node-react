@@ -1,0 +1,11 @@
+type User {
+  name:String!
+}
+
+type UserQueryRespone {
+  user: User
+}
+
+type Query {
+  checkUser(name: String!): UserQueryRespone!
+}
