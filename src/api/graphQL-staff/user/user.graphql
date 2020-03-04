@@ -1,11 +1,8 @@
 type User {
-  name:String!
-}
-
-type UserQueryRespone {
-  user: User
+  _id: String
+  name: String!
 }
 
 type Query {
-  checkUser(name: String!): UserQueryRespone!
+  checkUser(name: String!): User!
 }

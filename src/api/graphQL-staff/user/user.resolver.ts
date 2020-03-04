@@ -1,13 +1,11 @@
-import { UserQueryRespone, CheckUserQueryArgs } from '../../../types/graph';
-import User from '../../../models/user';
+import { CheckUserQueryArgs, User } from '../../../types/graph';
+import UserModel from '../../../models/user';
 
 const resolver = {
     Query: {
-        checkUser: (_, args: CheckUserQueryArgs): UserQueryRespone => {
-            return {
-                // user: { name: 'Katrin' }
-                user: User.find({}).select('name')
-            }
+        checkUser: async (_, args: CheckUserQueryArgs): Promise<User> => {
+            let myUser: User | any = (await UserModel.findOne({ name: args.name }))
+            return { _id: myUser._id, name: myUser.name }
         }
     }
 };

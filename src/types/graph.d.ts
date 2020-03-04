@@ -29,10 +29,7 @@ export interface SayHelloRespone {
   error: boolean;
 }
 
-export interface UserQueryRespone {
-  user: User | null;
-}
-
 export interface User {
+  _id: string;
   name: string;
 }
