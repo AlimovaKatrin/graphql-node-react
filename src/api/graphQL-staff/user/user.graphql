@@ -1,8 +1,22 @@
 type User {
   _id: String
-  name: String!
+  name: String
+  surName: String
+  nik: String
+  password: String
+  email: String
 }
 
 type Query {
   checkUser(name: String!): User!
+}
+
+type Mutation {
+  saveUser(
+    name: String,
+    surName: String,
+    nik: String,
+    password: String,
+    email: String
+  ):User
 }

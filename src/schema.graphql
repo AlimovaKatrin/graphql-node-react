@@ -6,7 +6,7 @@ type SayGoodByeResponse {
 type Query {
   sayBuy(name: String!): SayGoodByeResponse!
   sayHello(name: String!): SayHelloRespone!
-  checkUser(name: String!): UserQueryRespone!
+  checkUser(name: String!): User!
 }
 
 type SayHelloRespone {
@@ -15,9 +15,14 @@ type SayHelloRespone {
 }
 
 type User {
-  name: String!
+  _id: String
+  name: String
+  surName: String
+  nik: String
+  password: String
+  email: String
 }
 
-type UserQueryRespone {
-  user: User
+type Mutation {
+  saveUser(name: String, surName: String, nik: String, password: String, email: String): User
 }
