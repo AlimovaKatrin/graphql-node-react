@@ -1,5 +1,9 @@
 import { CheckUserQueryArgs, User } from '../../../types/graph';
 import UserModel from '../../../models/user';
+import bcrypt from 'bcrypt';
+
+const BCRYPT_ROUNDS = 10
+
 
 const resolver = {
     Query: {
@@ -15,15 +19,16 @@ const resolver = {
         }
     },
     Mutation: {
-        saveUser: async (_, args: User): Promise<void> => {
-            console.log(args);
-            await UserModel.create({
+        saveUser: async (_, args: User): Promise<User> => {
+            console.log('-----------------');
+            let myUser: User | any = (await UserModel.create({
                 name: args.name,
                 surName: args.surName,
                 nik: args.nik,
-                password: args.password,
+                password: await bcrypt.hash(args.password, BCRYPT_ROUNDS),
                 email: args.email
-            })
+            }))
+            return myUser
         }
     }
 };
